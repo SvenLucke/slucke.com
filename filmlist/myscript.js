@@ -2,6 +2,12 @@ const alphabet = 'QA-BC=0D"EFG<HI}1!J@:KL$M°N\'O2P_R]STU(3V.W*XYZÄ#4)?Ö&[Ü�
 const salt = 'bÖsno/H*'
 const expectedHash = 654460158
 
+window.onload = async function getTBodies() {
+    fetch('tbodies.html')
+        .then(value => value.text())
+        .then(value => document.getElementsByTagName('table')[0].innerHTML += value)
+}
+
 document.getElementById('password').addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
         event.preventDefault()
