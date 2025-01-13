@@ -8,21 +8,22 @@ add top border for first of year?*/
     --thick-padding: 4px;
 }
 
-table { 
+table {
     border-collapse: collapse;
     border-style: hidden;
 }
 
-table th { 
-    border-right: var(--thick-border); 
+table th {
+    border-right: var(--thick-border);
     padding-left: var(--thin-padding);
     padding-right: var(--thin-padding);
+    vertical-align: text-top;
 }
 
-table td { 
-    border-top: var(--thin-border); 
-    border-bottom: var(--thin-border); 
-    border-right: var(--thick-border); 
+table td {
+    border-top: var(--thin-border);
+    border-bottom: var(--thin-border);
+    border-right: var(--thick-border);
     padding-left: var(--thick-padding);
     padding-right: var(--thick-padding);
 }
@@ -33,14 +34,22 @@ table tbody {
 }
 
 /* center language and rewatch marker */
-td[headers~="language" i],
-td[headers~="rewatch" i] {
+td.centered-col {
     text-align: center;
 }
 
-
-
 /* monospace date */
-td[headers~="date" i] {
+td.num-data {
     font-family: monospace;
+    font-size: 1.1em;
+}
+
+/* signify encrypted data */
+.private {
+    filter: blur(2px);
+    user-select: none;
+}
+
+button {
+    margin-left: 0.5em;
 }

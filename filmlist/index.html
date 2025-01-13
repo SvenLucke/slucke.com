@@ -1,50 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <title>Films</title>
     <link rel="stylesheet" href="mystyle.css">
 </head>
 <body>
-    <input type="password" placeholder="PIN" id="password" value="">
-    <button id="the-button">Button Text</button>
+    <header>
+        <input type="password" placeholder="Password" id="password" value="">
+        <button id="decrypt-button">Decrypt</button>
+    </header>
+    <hr>
     <table>
         <thead>
             <tr>
                 <th scope=col id="date">Date</th>
                 <th scope=col id="film">Film</th>
-                <th scope=col id="language">Language</th>
+                <th scope=col id="language">
+                    Language
+                    <br>
+                    <span style="font-weight:normal; font-size:0.8em">(empty means OV)</div>
+                </th>
                 <th scope=col id="rewatch">Rewatch</th>
             </tr>
-            <tr>
-                <th></th>
-                <th></th>
-                <th style="font-weight:normal; font-size:0.8em">(empty means OV)</th>
-                <th></th>
-            </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td>2024-01-02</td>
-                <td>Testfilm</td>
-                <td></td>
-                <td headers="rewatch">x</td>
-            </tr>
-            <tr>
-                <td>2024-03-14</td>
-                <td>nic3 45678910</td>
-                <td></td>
-                <td headers="rewatch"></td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <td headers="date">2025-01-07</td>
-                <td>coole Sachedddddddddddddddddddddd</td>
-                <td headers="language">de</td>
-                <td headers="rewatch"></td>
-            </tr>
-        </tbody>
     </table>
 
     <script src="myscript.js"></script>
