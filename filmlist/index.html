@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Films</title>
+    <link rel="stylesheet" href="mystyle.css">
+</head>
+<body>
+    <header>
+        <input type="password" placeholder="Password" id="password" value="">
+        <button id="decrypt-button">Decrypt</button>
+    </header>
+    <hr>
+    <table id="filmlist-table">
+        <thead>
+            <tr>
+                <th scope=col id="date">Date</th>
+                <th scope=col id="film">Film</th>
+                <th scope=col id="language">
+                    Language
+                    <br>
+                    <span style="font-weight:normal; font-size:0.8em">(empty means OV)</div>
+                </th>
+                <th scope=col id="rewatch">Rewatch</th>
+            </tr>
+        </thead>
+    </table>
+
+    <script src="crypto-logic.js"></script>
+    <script src="decryption.js"></script>
+</body>
+</html>
