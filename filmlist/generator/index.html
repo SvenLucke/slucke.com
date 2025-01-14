@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Filmlist HTML generator</title>
+    <link rel="stylesheet" href="../mystyle.css">
+</head>
+<body>
+    <input type="file" id="filmlist-csv" accept="text/csv">
+    <input type="password" id="encryption-password" placeholder="Password for encryption" value="">
+    <button id="encrypt-button">Generate HTML</button>
+    <hr>
+    <table id="preview-table"></table>
+
+    <script src="../crypto-logic.js"></script>
+    <script src="encryption.js"></script>
+</body>
+</html>
