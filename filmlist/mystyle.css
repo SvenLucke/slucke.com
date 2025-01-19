@@ -1,9 +1,7 @@
-/*table style????
-add top border for first of year?*/
-
 :root {
-    --thin-border: 1px solid black;
-    --thick-border: 2px solid black;
+    color-scheme: light dark;
+    --thin-border: 1px solid;
+    --thick-border: 2px solid;
     --thin-padding: 1px;
     --thick-padding: 4px;
 }

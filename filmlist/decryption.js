@@ -78,7 +78,7 @@ function addCsvDownloadButton() {
 
 function getTableDataAsString() {
     const header = Array.from(document.getElementsByTagName('th'))
-        .map(colHead => `"${colHead.innerText.toString().replaceAll('\n', '')}"`)
+        .map(colHead => `"${colHead.innerText.toString().replaceAll('\n', ' ')}"`)
         .join(';')
 
     const rows = Array.from(document.getElementsByTagName('tr'))
