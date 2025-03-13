@@ -38,8 +38,8 @@ document.getElementById('decrypt-button').onclick = async function () {
     // display welcome message
     document.getElementsByTagName('header')[0].innerHTML = '<span style="color:green">Welcome!</span>'
 
-    const decryptedRows = await decryptTable(password)
-    addCsvDownloadButton(decryptedRows)
+    const decryptedData = await decryptTable(password)
+    addCsvDownloadButton(decryptedData)
 }
 
 function insertPasswordWarning() {
@@ -61,11 +61,14 @@ async function decryptTable(password) {
 }
 
 // TODO: still assumes array, but is object
-function addCsvDownloadButton(decryptedRows) {
+function addCsvDownloadButton(decryptedData) {
     // add cached header
-    decryptedRows.unshift(header)
+    let tableRows = [header]
 
-    const tableContent = joinRowsIntoString(decryptedRows)
+    for (const year in decryptedData) {
+        tableRows = tableRows.concat(decryptedData[year])
+    }
+    const tableContent = joinRowsIntoString(tableRows)
 
     let linkElement = document.createElement('a')
     linkElement.setAttribute('href', `data:text/csv,${encodeURIComponent(tableContent)}`)
