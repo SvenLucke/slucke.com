@@ -8,7 +8,7 @@ const privateColumns = [0, 1]
 
 // primitive caching
 let header = []
-let decryptedRows = {}
+let decryptedData = {}
 let localData = {}
 
 async function getSeparatedRowsFromLocalData(from, to = new Date().getFullYear()) {
@@ -27,7 +27,7 @@ async function getSeparatedRowsFromLocalData(from, to = new Date().getFullYear()
 }
 
 function separateIntoRows(text, removeHeader = true) {
-    const csvRows = text.split('\n')
+    const csvRows = text.split(/\r?\n/)
 
     // remove double quotes around entries and split around semicolons
     const separatedRows = csvRows.map(row => row.slice(1, -1).split('";"'))
@@ -70,10 +70,10 @@ function encryptData(rows, password) {
 
 function decryptData(dataByYear, password) {
     for (const year in dataByYear) {
-        if (!Object.hasOwn(decryptedRows, year))
-            decryptedRows[year] = encryptData(dataByYear[year], getInversePassword(password))
+        if (!Object.hasOwn(decryptedData, year))
+            decryptedData[year] = encryptData(dataByYear[year], getInversePassword(password))
     }
-    return structuredClone(decryptedRows)
+    return structuredClone(decryptedData)
 }
 
 function createTBodies(dataByYear, isEncrypted) {
