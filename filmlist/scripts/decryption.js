@@ -1,9 +1,10 @@
 const expectedHash = 908276809
 const salt = 'bÖsno/H*'
+const startingYear = 2024
 
 /* insert tbodies file into table on page */
 window.onload = async function getTBodies() {
-    const separatedRows = await getSeparatedRowsFromLocalData()
+    const separatedRows = await getSeparatedRowsFromLocalData(startingYear)
     const tbodies = createTBodies(separatedRows, true)
 
     document.getElementById('filmlist-table').appendChild(tbodies)
@@ -50,7 +51,7 @@ function insertPasswordWarning() {
 }
 
 async function decryptTable(password) {
-    const separatedRows = await getSeparatedRowsFromLocalData()
+    const separatedRows = await getSeparatedRowsFromLocalData(startingYear)
     const decryptedRows = decryptData(separatedRows, password)
     const tbodies = createTBodies(decryptedRows, false)
     // remove old tbodies and append new ones
@@ -59,6 +60,7 @@ async function decryptTable(password) {
     return decryptedRows
 }
 
+// TODO: still assumes array, but is object
 function addCsvDownloadButton(decryptedRows) {
     // add cached header
     decryptedRows.unshift(header)
