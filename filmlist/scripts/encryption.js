@@ -18,8 +18,8 @@ document.getElementById('encrypt-button').onclick = async function encryptCsv() 
 
     const encryptedRows = encryptData(separatedRows, password)
 
-    const tbodies = createTBodies(encryptedRows, true)
-    document.getElementById('preview-table').appendChild(tbodies)
+    const tbody = createTBody(encryptedRows, true)
+    document.getElementById('preview-table').appendChild(tbody)
 
     createDownloadButton(encryptedRows)
 }

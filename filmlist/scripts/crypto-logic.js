@@ -1,13 +1,13 @@
 const alphabet = 'ä(y@–76"µ$xQu<A,VüXC1RO%jJ\\?WlÜD:0~c{TMPE>_ẞ°B}]vwtdp§+&^5e!-zöN[ G.\'kqYZfÄ€n34b8ÖLSßr;h9|IsaomKF=#giHU2/*)'
 
 function getHash(password, salt) {
-    let currentVal = password + salt
+    let stringToHash = password + salt
     let sum = 0
-    for (let index = 0; index < currentVal.length; index++) {
-        const indexInDict = alphabet.indexOf(currentVal[index])
+    for (const char of stringToHash) {
+        const indexInDict = alphabet.indexOf(char)
         if (indexInDict == -1)
             continue
-        sum += indexInDict
+        sum += indexInDict + 1
         sum *= 3001
         sum %= 1e9 + 9
     }
@@ -31,13 +31,18 @@ function vigenere(message, password, startingIndex) {
 }
 
 function caesar(message, offset) {
-    return message.toString().split('').map(char => {
+    let resultMessage = ''
+    for (const char of message) {
         const indexInDict = alphabet.indexOf(char)
-        if (indexInDict == -1)
-            return char
+        if (indexInDict == -1) {
+            resultMessage += char
+            continue
+        }
         const newIndex = (indexInDict + offset) % alphabet.length
-        return alphabet[newIndex]
-    }).join('')
+        resultMessage += alphabet[newIndex]
+    }
+
+    return resultMessage
 }
 
 function reverseVigenere(message, password, startingIndex) {
@@ -47,10 +52,14 @@ function reverseVigenere(message, password, startingIndex) {
 
 function getInversePassword(password) {
     // map every symbol in password to the symbol that shifts by the same amount backwards
-    return Array.from(password)
-        .map(char => {
-            if (char == alphabet[0])
-                return char
-            return alphabet.charAt(alphabet.length - alphabet.indexOf(char))
-        }).join('')
+    let inversePassword = ''
+    for (const char of password) {
+        const index = alphabet.indexOf(char)
+        if (index == 0 || index == -1) {
+            inversePassword += char
+            continue
+        }
+        inversePassword += alphabet.charAt(alphabet.length - index)
+    }
+    return inversePassword
 }

@@ -81,25 +81,30 @@ function createTBodies(dataByYear, isEncrypted) {
 
     // one tbody per year
     for (const year in dataByYear) {
-        const tbody = document.createElement('tbody')
-
-        for (const row of dataByYear[year]) {
-            // create row element with Template
-            const trElement = document.createElement('tr')
-            trElement.innerHTML = rowHtmlTemplate
-
-            // set values in td elements
-            for (let colIndex = 0; colIndex < row.length; colIndex++) {
-                const textContent = document.createTextNode(row[colIndex])
-                const currentCell = trElement.getElementsByTagName('td')[colIndex]
-                currentCell.appendChild(textContent)
-                if (isEncrypted && privateColumns.includes(colIndex))
-                    currentCell.classList.add('private')
-            }
-            tbody.appendChild(trElement)
-        }
+        const tbody = createTBody(dataByYear[year], isEncrypted)
         tbodies.appendChild(tbody)
     }
 
     return tbodies
+}
+
+function createTBody(rows, isEncrypted) {
+    const tbody = document.createElement('tbody')
+
+    for (const row of rows) {
+        // create row element with Template
+        const trElement = document.createElement('tr')
+        trElement.innerHTML = rowHtmlTemplate
+
+        // set values in td elements
+        for (let colIndex = 0; colIndex < row.length; colIndex++) {
+            const textContent = document.createTextNode(row[colIndex])
+            const currentCell = trElement.getElementsByTagName('td')[colIndex]
+            currentCell.appendChild(textContent)
+            if (isEncrypted && privateColumns.includes(colIndex))
+                currentCell.classList.add('private')
+        }
+        tbody.appendChild(trElement)
+    }
+    return tbody
 }
