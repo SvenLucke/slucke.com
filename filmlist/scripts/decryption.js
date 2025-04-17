@@ -1,4 +1,4 @@
-const expectedHash = 908276809
+const expectedHash = 398993507
 const salt = 'bÖsno/H*'
 const startingYear = 2024
 
